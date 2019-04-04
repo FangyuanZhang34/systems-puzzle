@@ -8,6 +8,8 @@ services:
       - env_file
     networks:
       - db_network
+    expose:
+      - '5432'
   flaskapp:
     build: .
     env_file:
@@ -21,6 +23,7 @@ services:
       - db
   nginx:
     image: "nginx:1.13.5"
+    # fix port for host and container
     ports:
       - "8080:80" 
     volumes:
